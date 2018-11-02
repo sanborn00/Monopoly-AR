@@ -10,12 +10,36 @@ import UIKit
 import SpriteKit
 import ARKit
 
+protocol GameDelegate {
+
+}
+
+
+
 class ViewController: UIViewController, ARSKViewDelegate {
+    
+   
+    var player1Name : String = ""
+    var player1Token : String = ""
+    var player2Name : String = ""
+    var player2Token : String = ""
+   
+    
+    
     
     @IBOutlet var sceneView: ARSKView!
     
+
+    
     override func viewDidLoad() {
+        
+        
+       
+        
         super.viewDidLoad()
+        
+        print("1st name:"+player1Name)
+        print("2ed name:"+player2Name)
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -29,6 +53,8 @@ class ViewController: UIViewController, ARSKViewDelegate {
             sceneView.presentScene(scene)
         }
     }
+    
+   
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -51,7 +77,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
     
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
         // Create and configure a node for the anchor added to the view's session.
-        let labelNode = SKLabelNode(text: "👾")
+        let labelNode = SKLabelNode(text: player1Token)
         labelNode.horizontalAlignmentMode = .center
         labelNode.verticalAlignmentMode = .center
         return labelNode;
