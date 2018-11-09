@@ -36,8 +36,8 @@ class FirstVC: UIViewController, GameDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickerView.dataSource = self as? UIPickerViewDataSource
-        pickerView.delegate = self as? UIPickerViewDelegate
+        pickerView.dataSource = self
+        pickerView.delegate = self
         
     }
     
