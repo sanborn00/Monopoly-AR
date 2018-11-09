@@ -51,7 +51,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter 2ed player's name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sbx-5W-o4e">
-                                <rect key="frame" x="101" y="330" width="180" height="30"/>
+                                <rect key="frame" x="95" y="351" width="180" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -61,8 +61,8 @@
                                 <rect key="frame" x="72" y="420" width="238" height="151"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ubT-32-F86">
-                                <rect key="frame" x="66" y="171" width="238" height="151"/>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iMG-1P-Kz6">
+                                <rect key="frame" x="72" y="171" width="238" height="151"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selecte Character" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpW-O6-1eD">
@@ -87,6 +87,8 @@
                         <outlet property="lable" destination="lmp-Gb-6Ge" id="DOS-TW-mNP"/>
                         <outlet property="name1" destination="Uxv-hg-wbB" id="djC-qz-wMy"/>
                         <outlet property="name2" destination="Sbx-5W-o4e" id="fH4-ZU-kNQ"/>
+                        <outlet property="player1PickerView" destination="iMG-1P-Kz6" id="sTW-jS-X3B"/>
+                        <outlet property="player1Selection" destination="3ow-Vb-x6V" id="5HT-BC-byW"/>
                         <outlet property="player2PickerView" destination="fFB-MW-yeT" id="mmn-63-OKH"/>
                         <outlet property="player2Selection" destination="bpW-O6-1eD" id="tE8-Id-EGd"/>
                     </connections>

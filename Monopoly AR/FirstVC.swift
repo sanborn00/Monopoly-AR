@@ -16,7 +16,10 @@ class FirstVC: UIViewController, GameDelegate{
     @IBOutlet weak var name1: UITextField!
     @IBOutlet weak var name2: UITextField!
     
-
+    
+    @IBOutlet weak var player1PickerView: UIPickerView!
+    @IBOutlet weak var player1Selection: UILabel!
+    
     @IBOutlet weak var player2PickerView: UIPickerView!
     @IBOutlet weak var player2Selection: UILabel!
     
@@ -38,6 +41,9 @@ class FirstVC: UIViewController, GameDelegate{
         
         player2PickerView.dataSource = self
         player2PickerView.delegate = self
+        
+        player1PickerView.dataSource = self
+        player1PickerView.delegate = self
         
     }
     
@@ -69,14 +75,31 @@ extension FirstVC: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return dataSource.count
+        if(pickerView == player1PickerView){
+            return dataSource.count
+            
+        }else{
+            return dataSource.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        player2Selection.text = dataSource[row]
+        
+        if(pickerView == player2PickerView){
+            player2Selection.text = dataSource[row]
+            
+        }else{
+             player1Selection.text = dataSource[row]
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataSource[row]
+        
+        if(pickerView == player1PickerView){
+            return dataSource[row]
+            
+        }else{
+             return dataSource[row]
+        }
     }
 }
