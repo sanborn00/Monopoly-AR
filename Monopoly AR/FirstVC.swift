@@ -17,8 +17,8 @@ class FirstVC: UIViewController, GameDelegate{
     @IBOutlet weak var name2: UITextField!
     
 
-    @IBOutlet weak var pickerView: UIPickerView!
-    @IBOutlet weak var selection: UILabel!
+    @IBOutlet weak var player2PickerView: UIPickerView!
+    @IBOutlet weak var player2Selection: UILabel!
     
     @IBOutlet weak var lable: UILabel!
     
@@ -36,8 +36,8 @@ class FirstVC: UIViewController, GameDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickerView.dataSource = self
-        pickerView.delegate = self
+        player2PickerView.dataSource = self
+        player2PickerView.delegate = self
         
     }
     
@@ -49,7 +49,7 @@ class FirstVC: UIViewController, GameDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! ViewController
         vc.player1Name = name1.text!
-        vc.player1Token = selection.text!
+        vc.player1Token = player2Selection.text!
         vc.player2Name = name2.text!
         vc.player2Token = "a"
     }
@@ -73,7 +73,7 @@ extension FirstVC: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selection.text = dataSource[row]
+        player2Selection.text = dataSource[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

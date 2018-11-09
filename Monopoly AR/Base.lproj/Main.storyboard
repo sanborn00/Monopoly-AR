@@ -44,7 +44,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter 1st player's name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uxv-hg-wbB">
-                                <rect key="frame" x="101" y="262" width="180" height="30"/>
+                                <rect key="frame" x="101" y="100" width="180" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -61,8 +61,19 @@
                                 <rect key="frame" x="72" y="420" width="238" height="151"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ubT-32-F86">
+                                <rect key="frame" x="66" y="171" width="238" height="151"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selecte Character" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpW-O6-1eD">
                                 <rect key="frame" x="60" y="396" width="138" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selecte Character" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ow-Vb-x6V">
+                                <rect key="frame" x="41" y="142" width="138" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -76,8 +87,8 @@
                         <outlet property="lable" destination="lmp-Gb-6Ge" id="DOS-TW-mNP"/>
                         <outlet property="name1" destination="Uxv-hg-wbB" id="djC-qz-wMy"/>
                         <outlet property="name2" destination="Sbx-5W-o4e" id="fH4-ZU-kNQ"/>
-                        <outlet property="pickerView" destination="fFB-MW-yeT" id="mmn-63-OKH"/>
-                        <outlet property="selection" destination="bpW-O6-1eD" id="tE8-Id-EGd"/>
+                        <outlet property="player2PickerView" destination="fFB-MW-yeT" id="mmn-63-OKH"/>
+                        <outlet property="player2Selection" destination="bpW-O6-1eD" id="tE8-Id-EGd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lyh-UG-m2B" userLabel="First Responder" sceneMemberID="firstResponder"/>
