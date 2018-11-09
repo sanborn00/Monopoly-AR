@@ -16,6 +16,7 @@
 		E7A4A839218C001600D2A160 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A4A837218C001600D2A160 /* LaunchScreen.storyboard */; };
 		E7A4A844218C001600D2A160 /* Monopoly_ARTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4A843218C001600D2A160 /* Monopoly_ARTests.swift */; };
 		E7A4A84F218C097B00D2A160 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4A84E218C097B00D2A160 /* FirstVC.swift */; };
+		E7A7E3BB21962C2600A23341 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A7E3BA21962C2600A23341 /* HistoryVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		E7A4A843218C001600D2A160 /* Monopoly_ARTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monopoly_ARTests.swift; sourceTree = "<group>"; };
 		E7A4A845218C001600D2A160 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7A4A84E218C097B00D2A160 /* FirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
+		E7A7E3BA21962C2600A23341 /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				E7A4A82E218C001500D2A160 /* Scene.swift */,
 				E7A4A84E218C097B00D2A160 /* FirstVC.swift */,
 				E7A4A830218C001500D2A160 /* ViewController.swift */,
+				E7A7E3BA21962C2600A23341 /* HistoryVC.swift */,
 				E7A4A832218C001500D2A160 /* Main.storyboard */,
 				E7A4A835218C001600D2A160 /* Assets.xcassets */,
 				E7A4A837218C001600D2A160 /* LaunchScreen.storyboard */,
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7A4A831218C001500D2A160 /* ViewController.swift in Sources */,
+				E7A7E3BB21962C2600A23341 /* HistoryVC.swift in Sources */,
 				E7A4A84F218C097B00D2A160 /* FirstVC.swift in Sources */,
 				E7A4A82F218C001500D2A160 /* Scene.swift in Sources */,
 				E7A4A82B218C001500D2A160 /* AppDelegate.swift in Sources */,

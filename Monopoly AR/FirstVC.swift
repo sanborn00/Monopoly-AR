@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class FirstVC: UIViewController, GameDelegate{
+class FirstVC: UIViewController, GameDelegate, HistoryDelegate{
 
     
     @IBOutlet weak var name1: UITextField!
@@ -56,11 +56,20 @@ class FirstVC: UIViewController, GameDelegate{
     
     //Sending player's name and token to game controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! ViewController
+        
+        
+        
+        let vc = segue.destination
+        
+        if let vc = vc as? ViewController{
+        
         vc.player1Name = name1.text!
         vc.player1Token = player1Selection.text!
         vc.player2Name = name2.text!
         vc.player2Token = player2Selection.text!
+        }else{
+            print("hah")
+        }
     }
    
 
