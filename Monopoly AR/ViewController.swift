@@ -38,6 +38,9 @@ class ViewController: UIViewController, ARSKViewDelegate {
         
         super.viewDidLoad()
         
+        
+       
+        
         print("1st name:"+player1Name)
         print("2ed name:"+player2Name)
         
@@ -52,6 +55,13 @@ class ViewController: UIViewController, ARSKViewDelegate {
         if let scene = SKScene(fileNamed: "Scene") {
             sceneView.presentScene(scene)
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let alert = UIAlertController(title: "Welcome", message: "Player 1: \(player1Name)\(player1Token)\n Player 2: \(player2Name)\(player2Token)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
    
@@ -74,13 +84,30 @@ class ViewController: UIViewController, ARSKViewDelegate {
     }
     
     // MARK: - ARSKViewDelegate
-    
+    var turn = 0
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
         // Create and configure a node for the anchor added to the view's session.
+        
+        
         let labelNode = SKLabelNode(text: player1Token)
+        let labelNode1 = SKLabelNode(text: player1Token)
+        
+       
+        labelNode1.horizontalAlignmentMode = .center
+        labelNode1.verticalAlignmentMode = .center
+        
         labelNode.horizontalAlignmentMode = .center
         labelNode.verticalAlignmentMode = .center
-        return labelNode;
+        
+             if(turn == 0){
+                turn = 1
+                return labelNode;
+            
+             }else{
+            
+            turn = 0
+            return labelNode1;
+        }
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {

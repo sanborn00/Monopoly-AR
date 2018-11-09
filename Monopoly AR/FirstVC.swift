@@ -39,6 +39,9 @@ class FirstVC: UIViewController, GameDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    
+        
+        
         player2PickerView.dataSource = self
         player2PickerView.delegate = self
         
@@ -55,9 +58,9 @@ class FirstVC: UIViewController, GameDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! ViewController
         vc.player1Name = name1.text!
-        vc.player1Token = player2Selection.text!
+        vc.player1Token = player1Selection.text!
         vc.player2Name = name2.text!
-        vc.player2Token = "a"
+        vc.player2Token = player2Selection.text!
     }
    
 
