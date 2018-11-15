@@ -28,7 +28,9 @@ class FirstVC: UIViewController, GameDelegate, HistoryDelegate{
     let standardDefaults2 = UserDefaults.standard
     
     
-    var hisPlayer1 = ""
+    var firstPlayerHistory1 = ""
+    var firstTokenHistort1 = ""
+    var secondPlayerHistory1 = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,9 +65,9 @@ class FirstVC: UIViewController, GameDelegate, HistoryDelegate{
             vc.player2Token = player2Selection.text!
         }else if let vc = vc as? HistoryVC{
             
-            if(name1.text == "" && hisPlayer1 != ""){
-                vc.standardDefaults0.set(hisPlayer1, forKey: "p1Name")
-                print("sent to his!!!!"+hisPlayer1)
+            if(name1.text == "" && firstPlayerHistory1 != ""){
+                vc.standardDefaults0.set(firstPlayerHistory1+" "+firstTokenHistort1, forKey: "p1Name")
+                print("sent to his!!!!"+firstPlayerHistory1+firstTokenHistort1)
                 
             }
         }

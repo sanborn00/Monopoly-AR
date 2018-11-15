@@ -8,7 +8,6 @@
 
 import UIKit
 
-var p1 = ""
 
 protocol HistoryDelegate {
     
@@ -41,7 +40,7 @@ class HistoryVC: UIViewController{
 
         
             //standardDefaults0.set("player1Name", forKey: "p1Name")
-        player1.text = standardDefaults0.object(forKey: "p1Name") as? String
+        player1.text = "Player1: \(standardDefaults0.object(forKey: "p1Name") as? String ?? "null")"
         
         
     }

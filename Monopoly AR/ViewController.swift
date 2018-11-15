@@ -132,8 +132,9 @@ class ViewController: UIViewController, ARSKViewDelegate,HistoryDelegate {
         
         
         if let vc = segue.destination as? FirstVC{
-            vc.hisPlayer1 = player1Name
-            print("sussed"+player1Name)
+            vc.firstPlayerHistory1 = player1Name
+            vc.firstTokenHistort1 = player1Token
+            print("sussed"+player1Name+player1Token)
         }
        
     }
