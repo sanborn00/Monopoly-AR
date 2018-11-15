@@ -11,7 +11,7 @@ import UIKit
 
 
 class FirstVC: UIViewController, GameDelegate, HistoryDelegate{
-
+    
     
     @IBOutlet weak var name1: UITextField!
     @IBOutlet weak var name2: UITextField!
@@ -23,23 +23,17 @@ class FirstVC: UIViewController, GameDelegate, HistoryDelegate{
     @IBOutlet weak var player2PickerView: UIPickerView!
     @IBOutlet weak var player2Selection: UILabel!
     
-    @IBOutlet weak var lable: UILabel!
-    
-    @IBAction func hidde(_ sender: Any) {
-        
-        lable.isHidden = true
-    }
-    
-
+    let standardDefaults0 = UserDefaults.standard
+    let standardDefaults1 = UserDefaults.standard
+    let standardDefaults2 = UserDefaults.standard
     
     
-   
-    
+    var hisPlayer1 = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
+        
         
         
         player2PickerView.dataSource = self
@@ -62,18 +56,23 @@ class FirstVC: UIViewController, GameDelegate, HistoryDelegate{
         let vc = segue.destination
         
         if let vc = vc as? ViewController{
-        
-        vc.player1Name = name1.text!
-        vc.player1Token = player1Selection.text!
-        vc.player2Name = name2.text!
-        vc.player2Token = player2Selection.text!
-        }else{
-            print("hah")
+            
+            vc.player1Name = name1.text!
+            vc.player1Token = player1Selection.text!
+            vc.player2Name = name2.text!
+            vc.player2Token = player2Selection.text!
+        }else if let vc = vc as? HistoryVC{
+            
+            if(name1.text == "" && hisPlayer1 != ""){
+                vc.standardDefaults0.set(hisPlayer1, forKey: "p1Name")
+                print("sent to his!!!!"+hisPlayer1)
+                
+            }
         }
     }
-   
-
-
+    
+    
+    
     
     
 }
@@ -101,7 +100,7 @@ extension FirstVC: UIPickerViewDelegate, UIPickerViewDataSource {
             player2Selection.text = dataSource[row]
             
         }else{
-             player1Selection.text = dataSource[row]
+            player1Selection.text = dataSource[row]
         }
     }
     
@@ -111,7 +110,7 @@ extension FirstVC: UIPickerViewDelegate, UIPickerViewDataSource {
             return dataSource[row]
             
         }else{
-             return dataSource[row]
+            return dataSource[row]
         }
     }
 }

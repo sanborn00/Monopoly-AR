@@ -16,20 +16,22 @@ protocol GameDelegate {
 
 
 
-class ViewController: UIViewController, ARSKViewDelegate {
+class ViewController: UIViewController, ARSKViewDelegate,HistoryDelegate {
+
+    
     
    
     var player1Name : String = ""
     var player1Token : String = ""
     var player2Name : String = ""
     var player2Token : String = ""
-   
+    
+    
     
     
     
     @IBOutlet var sceneView: ARSKView!
     
-
     
     override func viewDidLoad() {
         
@@ -38,7 +40,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
         
         super.viewDidLoad()
         
-        
+       
        
         
         print("1st name:"+player1Name)
@@ -124,4 +126,16 @@ class ViewController: UIViewController, ARSKViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        if let vc = segue.destination as? FirstVC{
+            vc.hisPlayer1 = player1Name
+            print("sussed"+player1Name)
+        }
+       
+    }
+    
 }
