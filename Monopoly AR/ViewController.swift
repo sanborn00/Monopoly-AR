@@ -73,6 +73,8 @@ class ViewController: UIViewController, ARSKViewDelegate,HistoryDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
+        
+        //configuration.planeDetection = [.horizontal]
 
         // Run the view's session
         sceneView.session.run(configuration)
@@ -91,12 +93,23 @@ class ViewController: UIViewController, ARSKViewDelegate,HistoryDelegate {
         // Create and configure a node for the anchor added to the view's session.
         
         
-        let labelNode = SKLabelNode(text: player1Token)
-        let labelNode1 = SKLabelNode(text: player1Token)
         
-       
+        let labelNode = SKLabelNode(text: player1Token)
+        let labelNode1 = SKLabelNode(text: player2Token)
+        
+        let test = SKSpriteNode(imageNamed: "1024")
+        
+        test.zPosition = 200
+        test.size = CGSize(width: 32, height: 32)
+        test.position = CGPoint(x: 30, y: 30)
+        
+        
+        
+        labelNode.zPosition = 10000
+        //labelNode1.size = CGSize(width: 9, height: 9)
+        
         labelNode1.horizontalAlignmentMode = .center
-        labelNode1.verticalAlignmentMode = .center
+        labelNode1.verticalAlignmentMode = SKLabelVerticalAlignmentMode(rawValue: 50)!
         
         labelNode.horizontalAlignmentMode = .center
         labelNode.verticalAlignmentMode = .center
@@ -107,8 +120,8 @@ class ViewController: UIViewController, ARSKViewDelegate,HistoryDelegate {
             
              }else{
             
-            turn = 0
-            return labelNode1;
+                turn = 0
+                return labelNode1;
         }
     }
     
