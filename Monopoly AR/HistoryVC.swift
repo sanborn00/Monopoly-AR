@@ -31,9 +31,6 @@ class HistoryVC: UIViewController{
     var player2Token : String = ""
     
     
-    var p1 = ""
-    
-  
     
     
     override func viewDidLoad() {
@@ -41,7 +38,7 @@ class HistoryVC: UIViewController{
         
             //standardDefaults0.set("player1Name", forKey: "p1Name")
         player1.text = "Player1: \(standardDefaults0.object(forKey: "p1Name") as? String ?? "null")"
-        
+        player2.text = "Player2: \(standardDefaults0.object(forKey: "p2Name") as? String ?? "null")"
         
     }
     
