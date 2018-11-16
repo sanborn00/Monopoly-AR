@@ -26,6 +26,15 @@ class ViewController: UIViewController, ARSKViewDelegate,HistoryDelegate {
     var player2Name : String = ""
     var player2Token : String = ""
     
+    @IBOutlet weak var dice: UILabel!
+    
+   
+    
+    @IBAction func roll(_ sender: Any) {
+        let num = Int.random(in: 1 ..< 7)
+        dice.text = "Dicd: \(num)"
+        
+    }
     
     
     
