@@ -203,6 +203,7 @@
                     <connections>
                         <outlet property="dice" destination="IhJ-9h-WwM" id="AKQ-RL-8hh"/>
                         <outlet property="sceneView" destination="EO5-fy-WZq" id="YuC-8q-ovz"/>
+                        <outlet property="who" destination="GjH-jZ-iJb" id="88U-XL-18K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

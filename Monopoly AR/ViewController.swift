@@ -20,6 +20,10 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
 
     var p1XPos = -160
     var p1YPos = -140
+    
+    var p2XPos = -130
+    var p2YPos = -140
+    
     let test = SKSpriteNode(imageNamed: "map")
 
     var labelNode = SKLabelNode()
@@ -30,10 +34,15 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
     var player2Name : String = ""
     var player2Token : String = ""
     
+    var turn = 0
+    
+    var p1Counter = 0
+    var p2Counter = 0
     @IBOutlet weak var dice: UILabel!
     
    
     
+    @IBOutlet weak var who: UILabel!
     
     
     @IBAction func roll(_ sender: Any) {
@@ -41,33 +50,47 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         //let point = move()
         
         
-        let num = Int.random(in: 1 ..< 7)
-        //let num = 6
-        dice.text = "Dice: \(num)"
-    
-        
-        
-        print("num: \(num)")
-        
-        switch num {
-        case 1...3:
-            print("P1Y: \(p1YPos)")
-            let amove = SKAction.move(to: firstPosGenerator(num: num), duration: 1.5)
-            labelNode.run(amove)
-           break
+        //begin with first player
+        if(turn == 0 && p1Counter < 3){
             
-        case 4...6:
-            let amove = SKAction.move(to: firstPosGenerator(num: 3), duration: 1.5)
-            let bmove = SKAction.move(to: secondPosGenerator(num: num), duration: 1.5)
-            labelNode.run(amove)
+            let num = Int.random(in: 1 ..< 7)
+            //let num = 6
+            dice.text = "Dice: \(num)"
+            who.text = "Turn: \(player1Name)"
             
-            //delayed movement
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
-                self.labelNode.run(bmove)
+            
+            print("num: \(num)")
+            
+            
+            switch num {
+            case 1...3:
+                print("P1Y: \(p1YPos)")
+                let amove = SKAction.move(to: firstPosGenerator(num: num), duration: 1.5)
+                labelNode.run(amove)
+                break
+                
+            case 4...6:
+                let amove = SKAction.move(to: firstPosGenerator(num: 3), duration: 1.5)
+                let bmove = SKAction.move(to: secondPosGenerator(num: num), duration: 1.5)
+                labelNode.run(amove)
+                
+                //delayed movement
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                    self.labelNode.run(bmove)
+                }
+            default:
+                break
             }
-        default:
-            break
+            
+            
+            turn = 1
+        }else if(turn == 1 && p2Counter < 3){
+            
+            who.text = "Turn: \(player2Name)"
+            
+            turn = 0
         }
+        
     }
     
     //dice == 1 to 3
@@ -77,14 +100,14 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         switch num {
         case 1:
             p1YPos = p1YPos + 90
-            pos = CGPoint(x: p1XPos, y: p1YPos)
+            pos = CGPoint(x: -160, y: p1YPos)
             break
         case 2:
             p1YPos = p1YPos + 90 * 2
-            pos = CGPoint(x: p1XPos, y: p1YPos)
+            pos = CGPoint(x: -160, y: p1YPos)
         case 3:
             p1YPos = p1YPos + 90 * 3
-            pos = CGPoint(x: p1XPos, y: p1YPos)
+            pos = CGPoint(x: -160, y: p1YPos)
         default:
             break
         }
@@ -128,7 +151,8 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         super.viewDidLoad()
         
        
-       
+       //init who label
+        who.text = "Turn: \(player1Name)"
         
         print("1st name:"+player1Name)
         print("2ed name:"+player2Name)
@@ -175,7 +199,7 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
     }
     
     // MARK: - ARSKViewDelegate
-    var turn = 0
+   
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
         // Create and configure a node for the anchor added to the view's session.
         
@@ -203,20 +227,13 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         
         
         labelNode.position = CGPoint(x: p1XPos, y: p1YPos)
-        labelNode1.position = CGPoint(x: -130, y: -140)
+        labelNode1.position = CGPoint(x: p2XPos, y: p2YPos)
         
         test.addChild(labelNode)
         test.addChild(labelNode1)
         
-             if(turn == 0){
-                turn = 1
-                return test;
-            
-             }else{
-            
-                turn = 0
-                return labelNode1;
-        }
+        return test;
+
     }
     
     
