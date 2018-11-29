@@ -18,6 +18,9 @@ protocol GameDelegate {
 
 class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameDelegate {
 
+    var p1XPos = -160
+    var p1YPos = -140
+    let test = SKSpriteNode(imageNamed: "map")
 
     var labelNode = SKLabelNode()
     var labelNode1 = SKLabelNode()
@@ -31,15 +34,51 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
     
    
     
+    
+    
     @IBAction func roll(_ sender: Any) {
-        let num = Int.random(in: 1 ..< 7)
+        
+        let point = move()
+        let amove = SKAction.move(to: point, duration: 1.5)
+        
+//        let num = Int.random(in: 1 ..< 7)
+        let num = 1
         dice.text = "Dice: \(num)"
+        print("num: \(num)")
         
-        
-        labelNode.position = CGPoint(x: -100, y: 100)
+        switch num {
+        case 1:
+            print("P1Y: \(p1YPos)")
+            
+            labelNode.run(amove)
+            labelNode.run(amove)
+            //move()
+            
+//            test.removeChildren(in: [labelNode])
+//            move()
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                self.test.addChild(self.labelNode)
+//                self.test.removeChildren(in: [self.labelNode])
+//                self.move()
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                    self.test.addChild(self.labelNode)
+//                }
+//            }
+            
+           
+//            move()
+           
+           break
+        default:
+            break
+        }
     }
     
-    
+    func move() -> CGPoint{
+        p1YPos = p1YPos + 90
+        let pos = CGPoint(x: p1XPos, y: p1YPos)
+        return pos
+    }
     
     
     @IBOutlet var sceneView: ARSKView!
@@ -109,7 +148,7 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         labelNode = SKLabelNode(text: player1Token)
         labelNode1 = SKLabelNode(text: player2Token)
         
-        let test = SKSpriteNode(imageNamed: "map")
+       
         
         test.zPosition = 200
         //test.size = CGSize(width: 32, height: 32)
@@ -127,7 +166,7 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         labelNode.verticalAlignmentMode = .center
         
         
-        labelNode.position = CGPoint(x: -160, y: -140)
+        labelNode.position = CGPoint(x: p1XPos, y: p1YPos)
         labelNode1.position = CGPoint(x: -130, y: -140)
         
         test.addChild(labelNode)

@@ -182,14 +182,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSD-gX-xh2">
-                                <rect key="frame" x="289" y="700" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKR-Fj-FEY">
+                                <rect key="frame" x="282" y="700" width="52" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Roll"/>
                                 <connections>
-                                    <action selector="roll:" destination="BV1-FR-VrT" eventType="touchUpInside" id="YJa-7X-9wf"/>
-                                    <action selector="roll:" destination="SZV-WD-TEh" eventType="touchUpInside" id="o9m-NV-3uQ"/>
+                                    <action selector="roll:" destination="BV1-FR-VrT" eventType="touchUpInside" id="J1U-1l-25V"/>
                                 </connections>
                             </button>
                         </subviews>
