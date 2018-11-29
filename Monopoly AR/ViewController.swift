@@ -19,7 +19,8 @@ protocol GameDelegate {
 class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameDelegate {
 
 
-    
+    var labelNode = SKLabelNode()
+    var labelNode1 = SKLabelNode()
    
     var player1Name : String = ""
     var player1Token : String = ""
@@ -34,6 +35,8 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         let num = Int.random(in: 1 ..< 7)
         dice.text = "Dice: \(num)"
         
+        
+        labelNode.position = CGPoint(x: -100, y: 100)
     }
     
     
@@ -103,8 +106,8 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         
         
         
-        let labelNode = SKLabelNode(text: player1Token)
-        let labelNode1 = SKLabelNode(text: player2Token)
+        labelNode = SKLabelNode(text: player1Token)
+        labelNode1 = SKLabelNode(text: player2Token)
         
         let test = SKSpriteNode(imageNamed: "map")
         
@@ -118,15 +121,17 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         //labelNode1.size = CGSize(width: 9, height: 9)
         
         labelNode1.horizontalAlignmentMode = .center
-        labelNode1.verticalAlignmentMode = SKLabelVerticalAlignmentMode(rawValue: 50)!
+        labelNode1.verticalAlignmentMode = .center
         
         labelNode.horizontalAlignmentMode = .center
         labelNode.verticalAlignmentMode = .center
         
         
-        labelNode.position = CGPoint(x: 10, y: 100)
+        labelNode.position = CGPoint(x: -160, y: -140)
+        labelNode1.position = CGPoint(x: -130, y: -140)
         
         test.addChild(labelNode)
+        test.addChild(labelNode1)
         
              if(turn == 0){
                 turn = 1
