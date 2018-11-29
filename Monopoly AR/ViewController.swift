@@ -16,9 +16,9 @@ protocol GameDelegate {
 
 
 
-class ViewController: UIViewController, ARSKViewDelegate,HistoryDelegate {
+class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameDelegate {
 
-    
+
     
    
     var player1Name : String = ""
@@ -32,7 +32,7 @@ class ViewController: UIViewController, ARSKViewDelegate,HistoryDelegate {
     
     @IBAction func roll(_ sender: Any) {
         let num = Int.random(in: 1 ..< 7)
-        dice.text = "Dicd: \(num)"
+        dice.text = "Dice: \(num)"
         
     }
     
@@ -106,15 +106,15 @@ class ViewController: UIViewController, ARSKViewDelegate,HistoryDelegate {
         let labelNode = SKLabelNode(text: player1Token)
         let labelNode1 = SKLabelNode(text: player2Token)
         
-        let test = SKSpriteNode(imageNamed: "1024")
+        let test = SKSpriteNode(imageNamed: "map")
         
         test.zPosition = 200
-        test.size = CGSize(width: 32, height: 32)
+        //test.size = CGSize(width: 32, height: 32)
         test.position = CGPoint(x: 30, y: 30)
         
         
         
-        labelNode.zPosition = 10000
+        //labelNode.zPosition = 10000
         //labelNode1.size = CGSize(width: 9, height: 9)
         
         labelNode1.horizontalAlignmentMode = .center
@@ -123,9 +123,14 @@ class ViewController: UIViewController, ARSKViewDelegate,HistoryDelegate {
         labelNode.horizontalAlignmentMode = .center
         labelNode.verticalAlignmentMode = .center
         
+        
+        labelNode.position = CGPoint(x: 10, y: 100)
+        
+        test.addChild(labelNode)
+        
              if(turn == 0){
                 turn = 1
-                return labelNode;
+                return test;
             
              }else{
             
@@ -133,6 +138,9 @@ class ViewController: UIViewController, ARSKViewDelegate,HistoryDelegate {
                 return labelNode1;
         }
     }
+    
+    
+   
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
@@ -162,5 +170,9 @@ class ViewController: UIViewController, ARSKViewDelegate,HistoryDelegate {
         }
        
     }
+    
+    
+   
+
     
 }

@@ -11,6 +11,9 @@ import UIKit
 
 
 class FirstVC: UIViewController, GameDelegate, HistoryDelegate{
+
+    
+   
     
     
     @IBOutlet weak var name1: UITextField!
