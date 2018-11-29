@@ -38,45 +38,81 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
     
     @IBAction func roll(_ sender: Any) {
         
-        let point = move()
-        let amove = SKAction.move(to: point, duration: 1.5)
+        //let point = move()
         
-//        let num = Int.random(in: 1 ..< 7)
-        let num = 1
+        
+        let num = Int.random(in: 1 ..< 7)
+        //let num = 6
         dice.text = "Dice: \(num)"
+    
+        
+        
         print("num: \(num)")
         
         switch num {
-        case 1:
+        case 1...3:
             print("P1Y: \(p1YPos)")
-            
+            let amove = SKAction.move(to: firstPosGenerator(num: num), duration: 1.5)
             labelNode.run(amove)
-            labelNode.run(amove)
-            //move()
-            
-//            test.removeChildren(in: [labelNode])
-//            move()
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                self.test.addChild(self.labelNode)
-//                self.test.removeChildren(in: [self.labelNode])
-//                self.move()
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                    self.test.addChild(self.labelNode)
-//                }
-//            }
-            
-           
-//            move()
-           
            break
+            
+        case 4...6:
+            let amove = SKAction.move(to: firstPosGenerator(num: 3), duration: 1.5)
+            let bmove = SKAction.move(to: secondPosGenerator(num: num), duration: 1.5)
+            labelNode.run(amove)
+            
+            //delayed movement
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                self.labelNode.run(bmove)
+            }
         default:
             break
         }
     }
     
-    func move() -> CGPoint{
-        p1YPos = p1YPos + 90
-        let pos = CGPoint(x: p1XPos, y: p1YPos)
+    //dice == 1 to 3
+    func firstPosGenerator(num: Int) -> CGPoint{
+        var pos = CGPoint(x: p1XPos, y: p1YPos)
+        
+        switch num {
+        case 1:
+            p1YPos = p1YPos + 90
+            pos = CGPoint(x: p1XPos, y: p1YPos)
+            break
+        case 2:
+            p1YPos = p1YPos + 90 * 2
+            pos = CGPoint(x: p1XPos, y: p1YPos)
+        case 3:
+            p1YPos = p1YPos + 90 * 3
+            pos = CGPoint(x: p1XPos, y: p1YPos)
+        default:
+            break
+        }
+        
+        return pos
+    }
+    
+    
+    //dice == 4 to 6
+    func secondPosGenerator(num: Int) -> CGPoint{
+        
+        var pos = CGPoint(x: p1XPos, y: 130)
+        
+        switch num {
+        case 4:
+            p1XPos = p1XPos + 90
+            pos = CGPoint(x: p1XPos, y: 130)
+            break
+        case 5:
+            p1XPos = p1XPos + 90 * 2
+            pos = CGPoint(x: p1XPos, y: 130)
+        case 6:
+            p1XPos = p1XPos + 90 * 3
+            pos = CGPoint(x: p1XPos, y: 130)
+        default:
+            break
+        }
+        
         return pos
     }
     
