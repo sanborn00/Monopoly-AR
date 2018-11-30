@@ -161,9 +161,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                             </arskView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxb-XA-wwd">
-                                <rect key="frame" x="57" y="700" width="34" height="30"/>
+                                <rect key="frame" x="49" y="700" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
+                                <state key="normal" title="Restart"/>
                                 <connections>
                                     <segue destination="WjW-a3-9Ur" kind="presentation" identifier="back" id="Kbb-M2-X4y"/>
                                 </connections>

@@ -21,12 +21,15 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
     var p1XPos = -160
     var p1YPos = -140
     
+    
+    var p1InitPos = CGPoint(x: -160, y: -140)
+    
     var p2XPos = -130
     var p2YPos = -140
     
     let test = SKSpriteNode(imageNamed: "map")
 
-    var labelNode = SKLabelNode()
+    var p1Node = SKLabelNode()
     var labelNode1 = SKLabelNode()
    
     var player1Name : String = ""
@@ -38,6 +41,16 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
     
     var p1Counter = 0
     var p2Counter = 0
+    
+    let p1House0 = SKLabelNode(text: "🏡")
+    let p1House1 = SKLabelNode(text: "🏡")
+    let p1House2 = SKLabelNode(text: "🏡")
+    
+    let p2House = SKLabelNode(text: "🏠")
+    
+    var p1Score = 0
+    var p2Score = 0
+    
     @IBOutlet weak var dice: UILabel!
     
    
@@ -53,44 +66,95 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         //begin with first player
         if(turn == 0 && p1Counter < 3){
             
-            let num = Int.random(in: 1 ..< 7)
-            //let num = 6
+            p1Node.isHidden = false
+            
+//            let num = Int.random(in: 1 ..< 7)
+            let num = 3
             dice.text = "Dice: \(num)"
-            who.text = "Turn: \(player1Name)"
+           
             
             
             print("num: \(num)")
             
             
+            p1Counter = p1Counter + 1
+            
             switch num {
             case 1...3:
-                print("P1Y: \(p1YPos)")
-                let amove = SKAction.move(to: firstPosGenerator(num: num), duration: 1.5)
-                labelNode.run(amove)
+                //print("P1Y: \(p1YPos)")
+                let currentPoint: CGPoint = firstPosGenerator(num: num)
+                let amove = SKAction.move(to: currentPoint, duration: 1.5)
+                p1Node.run(amove)
+                
+                
+                //houseGenerator(who: 0, point: firstPosGenerator(num: num))
+                
+                // undone
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.houseGenerator(who: 0, which: self.p1Counter, point: currentPoint)
+                    self.p1Node.isHidden = true
+                    
+                }
+                
+                resetLocation()
+                
                 break
                 
             case 4...6:
+                
+                let currentPoint: CGPoint = secondPosGenerator(num: num)
+                
                 let amove = SKAction.move(to: firstPosGenerator(num: 3), duration: 1.5)
-                let bmove = SKAction.move(to: secondPosGenerator(num: num), duration: 1.5)
-                labelNode.run(amove)
+                let bmove = SKAction.move(to: currentPoint, duration: 1.5)
+                p1Node.run(amove)
                 
                 //delayed movement
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
-                    self.labelNode.run(bmove)
+                    self.p1Node.run(bmove)
                 }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
+                    self.houseGenerator(who: 0, which: self.p1Counter, point: currentPoint)
+                    self.p1Node.isHidden = true
+                    
+                }
+                
+                resetLocation()
+                
+                break
+                
+            case 7...9:
+                break
+                
+            case 10...12:
+                break
+                
             default:
                 break
             }
             
-            
+             who.text = "Turn: \(player2Name)"
             turn = 1
         }else if(turn == 1 && p2Counter < 3){
             
-            who.text = "Turn: \(player2Name)"
+           
             
+            p2Counter = p2Counter + 1
+            
+            who.text = "Turn: \(player1Name)"
             turn = 0
         }
         
+        if(p1Counter == 3 && p2Counter == 3){
+            print("end")
+        }
+    }
+    
+    
+    func resetLocation(){
+        p1Node.position = p1InitPos
+        p1XPos = Int(p1InitPos.x)
+        p1YPos = Int(p1InitPos.y)
     }
     
     //dice == 1 to 3
@@ -121,6 +185,7 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         
         var pos = CGPoint(x: p1XPos, y: 130)
         
+        
         switch num {
         case 4:
             p1XPos = p1XPos + 90
@@ -139,6 +204,40 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         return pos
     }
     
+    func houseGenerator(who: Int, which: Int, point: CGPoint){
+        
+        print("in")
+        if(who == 0){
+            
+            switch which{
+                
+            case 1:
+                p1House0.position = CGPoint(x: point.x, y: point.y)
+                p1House0.isHidden = false
+                print("added!")
+                break
+            case 2:
+                p1House1.position = CGPoint(x: point.x, y: point.y)
+                p1House1.isHidden = false
+                print("added 1!")
+                break
+            case 3:
+                p1House2.position = CGPoint(x: point.x, y: point.y)
+                p1House2.isHidden = false
+                print("added 2!")
+                break
+            default:
+                break
+            }
+            //test.addChild(p1House)
+            
+        }else{
+            
+            
+            
+        }
+        
+    }
     
     @IBOutlet var sceneView: ARSKView!
     
@@ -205,7 +304,7 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         
         
         
-        labelNode = SKLabelNode(text: player1Token)
+        p1Node = SKLabelNode(text: player1Token)
         labelNode1 = SKLabelNode(text: player2Token)
         
        
@@ -222,14 +321,30 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         labelNode1.horizontalAlignmentMode = .center
         labelNode1.verticalAlignmentMode = .center
         
-        labelNode.horizontalAlignmentMode = .center
-        labelNode.verticalAlignmentMode = .center
+        p1Node.horizontalAlignmentMode = .center
+        p1Node.verticalAlignmentMode = .center
         
         
-        labelNode.position = CGPoint(x: p1XPos, y: p1YPos)
+        p1Node.position = CGPoint(x: p1XPos, y: p1YPos)
         labelNode1.position = CGPoint(x: p2XPos, y: p2YPos)
         
-        test.addChild(labelNode)
+        
+        p1House0.position=CGPoint(x: p2XPos, y: p2YPos)
+        test.addChild(p1House0)
+        p1House0.isHidden = true
+        
+        p1House1.position=CGPoint(x: p2XPos, y: p2YPos)
+        test.addChild(p1House1)
+        p1House1.isHidden = true
+        
+        p1House2.position=CGPoint(x: p2XPos, y: p2YPos)
+        test.addChild(p1House2)
+        p1House2.isHidden = true
+        
+        test.addChild(p2House)
+        p2House.isHidden = true
+        
+        test.addChild(p1Node)
         test.addChild(labelNode1)
         
         return test;
