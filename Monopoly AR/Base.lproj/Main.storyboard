@@ -193,18 +193,18 @@
                                     <action selector="roll:" destination="BV1-FR-VrT" eventType="touchUpInside" id="J1U-1l-25V"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="P2 Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pz-BD-dLc">
-                                <rect key="frame" x="266" y="111" width="74" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="P2 Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pz-BD-dLc">
+                                <rect key="frame" x="258" y="111" width="97" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="P1 Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqd-pn-TAe">
-                                <rect key="frame" x="27" y="110" width="72" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="P1 Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqd-pn-TAe">
+                                <rect key="frame" x="31" y="110" width="94" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.047185833570000002" green="0.77062530240000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -219,6 +219,8 @@
                     </view>
                     <connections>
                         <outlet property="dice" destination="IhJ-9h-WwM" id="AKQ-RL-8hh"/>
+                        <outlet property="p1ScoreLabel" destination="Mqd-pn-TAe" id="WFf-MU-6FF"/>
+                        <outlet property="p2ScoreLabel" destination="6pz-BD-dLc" id="2Ua-BY-in1"/>
                         <outlet property="rollButton" destination="EKR-Fj-FEY" id="15N-6M-Tdf"/>
                         <outlet property="sceneView" destination="EO5-fy-WZq" id="YuC-8q-ovz"/>
                         <outlet property="who" destination="GjH-jZ-iJb" id="88U-XL-18K"/>

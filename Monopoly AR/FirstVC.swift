@@ -39,7 +39,7 @@ class FirstVC: UIViewController, GameDelegate, HistoryDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
         
         
         player2PickerView.dataSource = self

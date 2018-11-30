@@ -52,6 +52,8 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
     
     var p1Score = 0
     var p2Score = 0
+    @IBOutlet weak var p2ScoreLabel: UILabel!
+    @IBOutlet weak var p1ScoreLabel: UILabel!
     
     @IBOutlet weak var dice: UILabel!
     
@@ -64,8 +66,7 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
     @IBAction func roll(_ sender: Any) {
         
         
-//        let num = Int.random(in: 1 ..< 7)
-        let num = 6
+        let num = Int.random(in: 1 ..< 13)
         dice.text = "Dice: \(num)"
         
         //begin with first player
@@ -83,6 +84,8 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
             switch num {
             case 1...3:
                 //print("P1Y: \(p1YPos)")
+                //print(firstPosGenerator(num: 3, who: 0))
+                
                 let currentPoint: CGPoint = firstPosGenerator(num: num, who: turn)
                 let amove = SKAction.move(to: currentPoint, duration: 1.5)
                 p1Node.run(amove)
@@ -95,6 +98,9 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
                     self.p1Node.isHidden = true
                     
                 }
+            
+                p1Score = p1Score+1
+               
                 
                 resetP1Location()
                 
@@ -119,16 +125,84 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
                     
                 }
                 
+                p1Score = p1Score+1
+         
+                
                 resetP1Location()
                 
                 break
                 
             case 7...9:
                 
+                let currentPoint: CGPoint = thirdPosGenerator(num: num, who: 0)
+                
+                let amove = SKAction.move(to: firstPosGenerator(num: 3, who: 0), duration: 1.5)
+                
+               // print(firstPosGenerator(num: 3, who: 0))
+                
+                let bmove = SKAction.move(to: secondPosGenerator(num: 6, who: 0), duration: 1.5)
+                //print(secondPosGenerator(num: 6, who: 0))
+                let cmove = SKAction.move(to: currentPoint, duration: 1.5)
+                
+                p1Node.run(amove)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                    self.p1Node.run(bmove)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
+                    self.p1Node.run(cmove)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    self.houseGenerator(who: 0, which: self.p1Counter, point: currentPoint)
+                    self.p1Node.isHidden = true
+                    
+                }
+                
+                p1Score = p1Score+2
+              
+                
                 resetP1Location()
                 break
                 
             case 10...12:
+                
+                
+                let currentPoint: CGPoint = fourthPosGenerator(num: num, who: 0)
+                
+                let amove = SKAction.move(to: firstPosGenerator(num: 3, who: 0), duration: 1.5)
+                
+                // print(firstPosGenerator(num: 3, who: 0))
+                
+                let bmove = SKAction.move(to: secondPosGenerator(num: 6, who: 0), duration: 1.5)
+                //print(secondPosGenerator(num: 6, who: 0))
+                let cmove = SKAction.move(to: thirdPosGenerator(num: 9, who: 0), duration: 1.5)
+                
+                let dmove = SKAction.move(to: currentPoint, duration: 1.5)
+                
+                p1Node.run(amove)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                    self.p1Node.run(bmove)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
+                    self.p1Node.run(cmove)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4.8) {
+                    self.p1Node.run(dmove)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 6.5) {
+                    self.houseGenerator(who: 0, which: self.p1Counter, point: currentPoint)
+                    self.p1Node.isHidden = true
+                    
+                }
+                
+                p1Score = p1Score+2
+           
                 
                 resetP1Location()
                 break
@@ -160,6 +234,8 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
                     
                 }
                 
+                p2Score = p2Score+2
+                
                 resetP2Location()
                 break
                 
@@ -182,8 +258,83 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
                     
                 }
                 
+                p2Score = p2Score+2
+                
                 resetP2Location()
                 
+                break
+                
+            case 7...9:
+                
+                let currentPoint: CGPoint = thirdPosGenerator(num: num, who: 1)
+                
+                let amove = SKAction.move(to: firstPosGenerator(num: 3, who: 1), duration: 1.5)
+                
+                // print(firstPosGenerator(num: 3, who: 0))
+                
+                let bmove = SKAction.move(to: secondPosGenerator(num: 6, who: 1), duration: 1.5)
+                //print(secondPosGenerator(num: 6, who: 0))
+                let cmove = SKAction.move(to: currentPoint, duration: 1.5)
+                
+                p2Node.run(amove)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                    self.p2Node.run(bmove)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
+                    self.p2Node.run(cmove)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    self.houseGenerator(who: 1, which: self.p2Counter, point: currentPoint)
+                    self.p2Node.isHidden = true
+                    
+                }
+                
+                 p2Score = p2Score+1
+                
+                resetP2Location()
+                break
+                
+            case 10...12:
+                
+                
+                let currentPoint: CGPoint = fourthPosGenerator(num: num, who: 1)
+                
+                let amove = SKAction.move(to: firstPosGenerator(num: 3, who: 1), duration: 1.5)
+                
+                // print(firstPosGenerator(num: 3, who: 0))
+                
+                let bmove = SKAction.move(to: secondPosGenerator(num: 6, who: 1), duration: 1.5)
+                //print(secondPosGenerator(num: 6, who: 0))
+                let cmove = SKAction.move(to: thirdPosGenerator(num: 9, who: 1), duration: 1.5)
+                
+                let dmove = SKAction.move(to: currentPoint, duration: 1.5)
+                
+                p2Node.run(amove)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                    self.p2Node.run(bmove)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
+                    self.p2Node.run(cmove)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4.8) {
+                    self.p2Node.run(dmove)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 6.5) {
+                    self.houseGenerator(who: 1, which: self.p2Counter, point: currentPoint)
+                    self.p2Node.isHidden = true
+                    
+                }
+                
+                p2Score = p2Score+1
+                
+                resetP2Location()
                 break
                 
             default:
@@ -198,6 +349,9 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
             who.text = "Turn: \(player1Name)"
             turn = 0
         }
+        
+        p1ScoreLabel.text = "P1 Score: \(p1Score)"
+        p2ScoreLabel.text = "P2 Score: \(p2Score)"
         
         if(p1Counter == 3 && p2Counter == 3){
             rollButton.isHidden = true
@@ -242,15 +396,17 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         
             switch num {
             case 1:
-                p1YPos = p1YPos + 90
-                pos = CGPoint(x: -160, y: p1YPos)
+                pos = CGPoint(x: -160, y: -50)
+                
                 break
             case 2:
-                p1YPos = p1YPos + 90 * 2
-                pos = CGPoint(x: -160, y: p1YPos)
+                pos = CGPoint(x: -160, y: 40)
+               
+                break
             case 3:
-                p1YPos = p1YPos + 90 * 3
-                pos = CGPoint(x: -160, y: p1YPos)
+                pos = CGPoint(x: -160, y: 130)
+               
+                break
             default:
                 break
         }
@@ -262,15 +418,16 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
             
             switch num {
             case 1:
-                p2YPos = p2YPos + 90
-                pos = CGPoint(x: -130, y: p2YPos)
+                pos = CGPoint(x: -130, y: -50)
+                
                 break
             case 2:
-                p2YPos = p2YPos + 90 * 2
-                pos = CGPoint(x: -130, y: p2YPos)
+                pos = CGPoint(x: -130, y: 40)
+               
+                break
             case 3:
-                p2YPos = p2YPos + 90 * 3
-                pos = CGPoint(x: -130, y: p2YPos)
+                pos = CGPoint(x: -130, y: 130)
+                
             default:
                 break
             }
@@ -291,15 +448,17 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
         
             switch num {
             case 4:
-                p1XPos = p1XPos + 90
-                pos = CGPoint(x: p1XPos, y: 130)
+                pos = CGPoint(x: -70, y: 130)
+                
                 break
             case 5:
-                p1XPos = p1XPos + 90 * 2
-                pos = CGPoint(x: p1XPos, y: 130)
+                pos = CGPoint(x: 20, y: 130)
+                
+                break
             case 6:
-                p1XPos = p1XPos + 90 * 3
-                pos = CGPoint(x: p1XPos, y: 130)
+                pos = CGPoint(x: 110, y: 130)
+                
+                break
             default:
                 break
                 
@@ -314,15 +473,17 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
             
             switch num {
             case 4:
-                p2XPos = p2XPos + 90
-                pos = CGPoint(x: p2XPos, y: 130)
+                pos = CGPoint(x: -40, y: 130)
+               
                 break
             case 5:
-                p2XPos = p2XPos + 90 * 2
-                pos = CGPoint(x: p2XPos, y: 130)
+                pos = CGPoint(x: 50, y: 130)
+                
+                break
             case 6:
-                p2XPos = p2XPos + 90 * 3
-                pos = CGPoint(x: p2XPos, y: 130)
+                pos = CGPoint(x: 140, y: 130)
+               
+                break
             default:
                 break
                 
@@ -332,8 +493,122 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
             
         }
         
+    }
+    
+    func thirdPosGenerator(num: Int, who: Int) -> CGPoint{
+        
+        if(who == 0){
+            
+            var pos = CGPoint(x: p1XPos, y: p1YPos)
+            
+            switch num {
+            case 7:
+                
+                pos = CGPoint(x: 110, y: 40)
+                
+                break
+            case 8:
+                
+                pos = CGPoint(x: 110, y: -50)
+               
+                break
+            case 9:
+                pos = CGPoint(x: 110, y: -140)
+                
+            default:
+                break
+            }
+            return pos
+            
+        }else{
+            
+            var pos = CGPoint(x: p2XPos, y: p2YPos)
+            
+            switch num {
+            case 7:
+
+                pos = CGPoint(x: 140, y: 40)
+               
+                break
+            case 8:
+               
+                pos = CGPoint(x: 140, y: -50)
+                
+                break
+            case 9:
+                pos = CGPoint(x: 140, y: -140)
+                
+                break
+            default:
+                break
+            }
+            
+            return pos
+            
+        }
+        
         
     }
+    
+    func fourthPosGenerator(num: Int, who: Int) -> CGPoint{
+        
+        
+        if(who == 0){
+            
+            var pos = CGPoint(x: p1XPos, y: 130)
+            
+            
+            switch num {
+            case 10:
+                pos = CGPoint(x: 20, y: -140)
+                
+                break
+            case 11:
+                pos = CGPoint(x: -70, y: -140)
+                
+                break
+            case 12:
+                pos = CGPoint(x: -160, y: -140)
+               
+                break
+            default:
+                break
+                
+            }
+            
+            return pos
+            
+        }else{
+            
+            var pos = CGPoint(x: p2XPos, y: 130)
+            
+            switch num {
+            case 10:
+                pos = CGPoint(x: 50, y: -140)
+                
+                break
+            case 11:
+                pos = CGPoint(x: -40, y: -140)
+               
+                break
+            case 12:
+                pos = CGPoint(x: -130, y: -140)
+               
+                break
+            default:
+                break
+                
+            }
+            
+            
+            return pos
+        }
+        
+        
+        
+    }
+    
+    
     
     func houseGenerator(who: Int, which: Int, point: CGPoint){
         

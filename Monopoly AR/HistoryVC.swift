@@ -34,6 +34,8 @@ class HistoryVC: UIViewController{
     
     
     override func viewDidLoad() {
+        
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
 
         
             //standardDefaults0.set("player1Name", forKey: "p1Name")
