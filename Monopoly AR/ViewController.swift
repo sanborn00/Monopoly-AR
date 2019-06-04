@@ -711,7 +711,7 @@ class ViewController: UIViewController, ARSKViewDelegate, HistoryDelegate, GameD
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let alert = UIAlertController(title: "Welcome", message: "Player 1: \(player1Name)\(player1Token)\n Player 2: \(player2Name)\(player2Token) \n Touch Screnn To Place the Map", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Welcome", message: "Player 1: \(player1Name)\(player1Token)\n Player 2: \(player2Name)\(player2Token) \n Touch Screen To Place the Map", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
